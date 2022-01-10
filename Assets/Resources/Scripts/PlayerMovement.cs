@@ -1,37 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour {
-    public Vector3 speed;
+    public float speed = 20f;
     public float rotationSpeed;
-    private Rigidbody player;
+    public CharacterController player;
 
     // Start is called before the first frame update
     void Start() {
-        this.player = this.gameObject.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update() {
-        float inputX = Input.GetAxis("Horizontal");
-        float inputZ = Input.GetAxis("Vertical");
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
 
-        Vector3 movement = new Vector3(this.speed.x * inputX, 0, this.speed.z * inputZ);
+        Vector3 movement = new Vector3(x, 0, z);
 
-        transform.Translate(movement * Time.deltaTime);
+        player.Move(movement * speed * Time.deltaTime);
 
-        if (movement != Vector3.zero) {
-            //Quaternion toRotation = Quaternion.LookRotation(movement, Vector3.up);
-            //transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
-            //transform.forward = movement;
-        }
+        Vector3 mousePos = Input.mousePosition;
+        //Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 50));
+        Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(new Vector3( mousePos.x, mousePos.y, 50));
+        transform.LookAt(mouseWorld, Vector3.up);
+
     }
 
     private void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.CompareTag("Enemy")) {
             Debug.Log("Dead");
-            Destroy(this);
+            SceneManager.LoadScene(0);
         }
     }
 }
