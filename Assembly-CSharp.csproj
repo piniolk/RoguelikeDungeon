@@ -53,8 +53,11 @@
     <UnityVersion>2020.3.18f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Resources\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Resources\Scripts\CameraFollowPlayer.cs" />
+    <Compile Include="Assets\Resources\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Resources\Scripts\PlayerManager.cs" />
+    <Compile Include="Assets\Resources\Scripts\PlayerAttacks.cs" />
+    <Compile Include="Assets\Resources\Scripts\EnemyManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Imports\TextMesh Pro\Shaders\TMPro.cginc" />
