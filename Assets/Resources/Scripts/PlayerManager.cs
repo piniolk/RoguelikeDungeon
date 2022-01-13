@@ -1,17 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour {
-    public int health = 100;
-    public int maxHealth = 100;
-    public int mana = 100;
-    public int maxMana = 100;
+    public float health = 100;
+    public float maxHealth = 100;
+    public float mana = 100;
+    public float maxMana = 100;
+
+    GameManager gameManager;
 
     // Start is called before the first frame update
     void Start() {
-
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -25,37 +26,51 @@ public class PlayerManager : MonoBehaviour {
         }
     }
 
-    public void DamageTaken(int damage) {
+    public void DamageTaken(float damage) {
+        Debug.Log(damage + " damage Taken");
         health -= damage;
-        if(health == 0) {
+        gameManager.UpdateHealthNum(health);
+        if (health <= 0) {
             Debug.Log("Dead");
-            SceneManager.LoadScene(0);
+            gameManager.DeathScreenOn();
         }
     }
 
-    public void HealthAdd(int heal) {
+    public void HealthAdd(float heal) {
         if(health + heal > maxHealth) {
             health = maxHealth;
         } else {
             health += heal;
         }
+        gameManager.UpdateHealthNum(health);
     }
 
-    public bool ManaUse(int amount) {
+    public float GetHealth() {
+        return health;
+    }
+
+    public float GetMana() {
+        return mana;
+    }
+
+    public bool ManaUse(float amount) {
         if (mana - amount < 0) {
             Debug.Log("Not enough mana");
             return false;
         } else {
             mana -= amount;
+            gameManager.UpdateManaNum(mana);
             return true;
         }
     }
 
-    public void ManaAdd(int amount) {
+    public void ManaAdd(float amount) {
         if (mana + amount > maxMana) {
+            float temp = maxMana - mana;
             mana = maxMana;
         } else {
             mana += amount;
         }
+        gameManager.UpdateManaNum(mana);
     }
 }
