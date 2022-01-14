@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8363044475761023225}
   - component: {fileID: 8363044475761023224}
+  - component: {fileID: 6368028838369971613}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -54,3 +55,19 @@ MonoBehaviour:
   - {fileID: 0}
   healthBar: {fileID: 0}
   manaBar: {fileID: 0}
+--- !u!114 &6368028838369971613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8363044475761023231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba662771e48ce6e4498bee32d9bfd3d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefabs:
+  - {fileID: 5182092290278702632, guid: 335434315a25e364ea5047c9b6c1cb61, type: 3}
+  - {fileID: 3237701199789675039, guid: eb88f5baf4aaae546b682f0e3138ba15, type: 3}
+  - {fileID: 6023717803866540739, guid: e425e7685af27b042b446faadc5ef845, type: 3}
