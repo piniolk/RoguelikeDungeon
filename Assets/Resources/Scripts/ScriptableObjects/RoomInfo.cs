@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "State", menuName = "State")]
+[CreateAssetMenu(fileName = "New Room", menuName = "RoomInfo")]
 public class RoomInfo : ScriptableObject {
     // Start is called before the first frame update
     GameObject room;

@@ -9,16 +9,19 @@ public class GameManager : MonoBehaviour {
     public TextMeshProUGUI manaNum;
     public GameObject deathScreen;
     public Image[] invPanels;
+    public Image[] imgPanels;
     public Slider healthBar;
     public Slider manaBar;
     Color defaultInv;
     Color selectInv;
     float healthN;
     float manaN;
+    GameObject player;
     PlayerManager playerManager;
 
     // Start is called before the first frame update
     void Start() {
+        player = GameObject.FindGameObjectWithTag("Player");
         playerManager = FindObjectOfType<PlayerManager>();
         healthN = playerManager.GetHealth();
         manaN = playerManager.GetMana();
@@ -63,4 +66,12 @@ public class GameManager : MonoBehaviour {
         //invPanels[select] = GetComponent<Image>();
         invPanels[select - 1].color = selectInv;
     }
+
+    public void UpdateImg() {
+        Magic magic = playerManager.magicInv[playerManager.GetMagicMax() - 1];
+        Sprite newSprite = magic.GetImage();
+        imgPanels[playerManager.GetMagicMax() - 1].GetComponent<Image>().sprite = newSprite;
+        Debug.Log("Img supposed to be changed " + playerManager.GetMagicMax());
+    }
+
 }

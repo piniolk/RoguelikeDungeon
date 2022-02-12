@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour {
-    public float health = 100;
-    public float maxHealth = 100;
-    public float mana = 100;
-    public float maxMana = 100;
+    [SerializeField] float health = 100;
+    [SerializeField] float maxHealth = 100;
+    [SerializeField] float mana = 100;
+    [SerializeField] float maxMana = 100;
+    int magicMax = 0;
 
     GameManager gameManager;
+
+    public Magic[] magicInv;
 
     // Start is called before the first frame update
     void Start() {
@@ -26,7 +29,7 @@ public class PlayerManager : MonoBehaviour {
         }
     }
 
-    public void DamageTaken(float damage) {
+    void DamageTaken(float damage) {
         Debug.Log(damage + " damage Taken");
         health -= damage;
         gameManager.UpdateHealthNum(health);
@@ -36,13 +39,17 @@ public class PlayerManager : MonoBehaviour {
         }
     }
 
-    public void HealthAdd(float heal) {
+    public bool HealthAdd(float heal) {
+        if(health == maxHealth) {
+            return false;
+        }
         if(health + heal > maxHealth) {
             health = maxHealth;
         } else {
             health += heal;
         }
         gameManager.UpdateHealthNum(health);
+        return true;
     }
 
     public float GetHealth() {
@@ -72,5 +79,19 @@ public class PlayerManager : MonoBehaviour {
             mana += amount;
         }
         gameManager.UpdateManaNum(mana);
+    }
+
+    public void AddMagicInfo(Magic newMagic) {
+        magicInv[magicMax] = newMagic;
+        magicMax++;
+        magicInv[magicMax-1].setSelect(magicMax);
+    }
+
+    public bool CheckMagic(int num) {
+        return (num) <= magicMax;
+    }
+
+    public int GetMagicMax() {
+        return magicMax;
     }
 }
