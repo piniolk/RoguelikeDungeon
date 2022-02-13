@@ -19,9 +19,12 @@ public class GameManager : MonoBehaviour {
     float manaN;
     GameObject player;
     PlayerManager playerManager;
+    RoomRandomizer roomRandomizer;
 
     // Start is called before the first frame update
     void Start() {
+        roomRandomizer = GetComponent<RoomRandomizer>();
+        roomRandomizer.LoadLevel();
         player = GameObject.FindGameObjectWithTag("Player");
         playerManager = FindObjectOfType<PlayerManager>();
         healthN = playerManager.GetHealth();

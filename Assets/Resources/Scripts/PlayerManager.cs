@@ -11,11 +11,14 @@ public class PlayerManager : MonoBehaviour {
 
     GameManager gameManager;
 
+    PlayerAttacks playerAttacks;
+
     public Magic[] magicInv;
 
     // Start is called before the first frame update
     void Start() {
         gameManager = FindObjectOfType<GameManager>();
+        playerAttacks = GetComponent<PlayerAttacks>();
     }
 
     // Update is called once per frame
@@ -85,6 +88,9 @@ public class PlayerManager : MonoBehaviour {
         magicInv[magicMax] = newMagic;
         magicMax++;
         magicInv[magicMax-1].SetSelect(magicMax);
+        if (magicMax == 1) {
+            playerAttacks.UpdateCurrentMagic();
+        }
     }
 
     public bool CheckMagic(int num) {

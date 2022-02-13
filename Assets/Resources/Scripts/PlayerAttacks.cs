@@ -10,22 +10,30 @@ public class PlayerAttacks : MonoBehaviour {
     [SerializeField] float manaConsumed;
     public int magicSelect = 1;
     PlayerManager playerManager;
+    GameObject player;
     GameManager gameManager;
+    [SerializeField] GameObject particles;
+    GameObject particlesMagic;
 
     // Start is called before the first frame update
     void Start() {
         gameManager = FindObjectOfType<GameManager>();
         playerManager = GetComponent<PlayerManager>();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update() {
         if (Input.GetButtonDown("Fire1")) {
-            Attack(bluntDamage, bluntRange);
+            Attack(bluntDamage, bluntRange); 
+            GameObject probaParticleClone = Instantiate(particles, player.transform.position, player.transform.rotation) as GameObject;
+            Destroy(probaParticleClone, 3);
         }
         if (Input.GetButtonDown("Fire2") && playerManager.CheckMagic(magicSelect)) {
             if (playerManager.ManaUse(manaConsumed)) {
                 Attack(magicDamage, magicRange);
+                GameObject probaParticleClone = Instantiate(particlesMagic, player.transform.position, player.transform.rotation) as GameObject;
+                Destroy(probaParticleClone, 3);
             }
         }
         if (Input.GetKeyDown(KeyCode.Alpha1) && playerManager.CheckMagic(1)) {
@@ -59,8 +67,6 @@ public class PlayerAttacks : MonoBehaviour {
         RaycastHit hit;
 
         if (Physics.Raycast(transform.position, transform.forward, out hit, range)) {
-            Debug.Log("hit for " + damage);
-
             EnemyManager enemyManager = hit.transform.GetComponent<EnemyManager>();
             if (enemyManager != null) {
                 enemyManager.DamageTaken(damage);
@@ -68,11 +74,12 @@ public class PlayerAttacks : MonoBehaviour {
         }
     }
 
-    void UpdateCurrentMagic() {
+    public void UpdateCurrentMagic() {
         Magic newMagic = playerManager.magicInv[magicSelect - 1];
         magicDamage = newMagic.GetDamage();
         magicRange = newMagic.GetRange();
         manaConsumed = newMagic.GetManaCost();
+        particlesMagic = newMagic.GetParticles();
     }
 
 }

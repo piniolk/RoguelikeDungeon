@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 294135052}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: FDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -618,7 +618,7 @@ GameObject:
   - component: {fileID: 829319234}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: BDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -842,7 +842,7 @@ GameObject:
   - component: {fileID: 1289737353}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: LeftDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1290,7 +1290,7 @@ GameObject:
   - component: {fileID: 1622056521}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: RightDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

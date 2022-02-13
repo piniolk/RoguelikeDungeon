@@ -14,7 +14,7 @@ public class Magic : ScriptableObject {
     [SerializeField] private float cooldownCurrent;
     [SerializeField] private int select;
     [SerializeField] private Sprite image;
-    [SerializeField] private ParticleSystem particles;
+    [SerializeField] private GameObject particles;
 
     void Start() {
         Debug.Log("Reset");
@@ -50,7 +50,7 @@ public class Magic : ScriptableObject {
         return image;
     }
 
-    public ParticleSystem GetParticles() {
+    public GameObject GetParticles() {
         return particles;
     }
 

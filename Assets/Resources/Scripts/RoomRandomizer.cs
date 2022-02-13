@@ -5,16 +5,68 @@ using UnityEngine;
 public class RoomRandomizer : MonoBehaviour {
     public static int roomMax = 6;
     public GameObject[] roomPrefabs;
-    //public RoomInfo[] roomPrefabs;
-    GameObject[][] roomLayout;
-    //RoomInfo[][] roomLayout;
+    GameObject[,] roomLayout;
 
-    public void LoadLevel() {
-
+    private void Start() {
+        roomLayout = new GameObject[3, 3];
     }
 
-    private GameObject RandomSelect() {
-        int size = Random.Range(0, roomPrefabs.Length - 1);
-        return roomPrefabs[size];
+    public void LoadLevel() {
+        RandomSelect();
+        SpawnRoom();
+    }
+
+    private void RandomSelect() {
+        for (int i = 0; i < roomLayout.GetLength(0); i++) {
+            for (int j = 0; j < roomLayout.GetLength(1); j++) {
+                roomLayout[i, j] = roomPrefabs[Random.Range(0, roomPrefabs.Length)];
+            }
+        }
+    }
+
+    private void SpawnRoom() {
+        for (int i = 0; i < roomLayout.GetLength(0); i++) {
+            for (int j = 0; j < roomLayout.GetLength(1); j++) {
+                Vector3 location = new Vector3(i*105, 0, j*105 + 40);
+                Instantiate(roomLayout[i, j], location, Quaternion.identity);            
+            }
+        }
+        
+    }
+
+    public bool CheckValidRoom(float posx, float posz, string direction) {
+        float x = posx / 105;
+        int newx = (int)System.Math.Round(x);
+        float z = posz / 105;
+        int newz = (int)System.Math.Round(x);
+        bool result;
+
+        if(direction == "left") {
+            if (x < 0) {
+                result = false;
+            } else {
+                result = true;
+            }
+        } else if(direction == "right") {
+            if (x > roomLayout.GetLength(0) - 1) {
+                result = false;
+            } else {
+                result = true;
+            }
+        } else if(direction == "b") {
+            if (z < 0) {
+                result = false;
+            } else {
+                result = true;
+            }
+        } else {
+            if (z > roomLayout.GetLength(0) - 1) {
+                result = false;
+            } else {
+                result = true;
+            }
+        }
+
+        return result;
     }
 }
