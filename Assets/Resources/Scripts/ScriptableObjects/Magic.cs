@@ -10,30 +10,39 @@ public class Magic : ScriptableObject {
     [SerializeField] private float range;
     [SerializeField] private float damage;
     [SerializeField] private float manaConsumed;
-    [SerializeField] private int select = 0;
+    [SerializeField] private float cooldownMax;
+    [SerializeField] private float cooldownCurrent;
+    [SerializeField] private int select;
     [SerializeField] private Sprite image;
+    [SerializeField] private ParticleSystem particles;
 
-    public string getName() {
+    void Start() {
+        Debug.Log("Reset");
+        select = 0;
+        cooldownCurrent = 0;
+    }
+
+    public string GetName() {
         return name;
     }
 
-    public float getRange() {
+    public float GetRange() {
         return range;
     }
 
-    public float getDamage() {
+    public float GetDamage() {
         return damage;
     }
 
-    public float getManaCost() {
+    public float GetManaCost() {
         return manaConsumed;
     }
 
-    public int getSelect() {
+    public int GetSelect() {
         return select;
     }
 
-    public void setSelect(int num) {
+    public void SetSelect(int num) {
         select = num;
     }
 
@@ -41,4 +50,19 @@ public class Magic : ScriptableObject {
         return image;
     }
 
+    public ParticleSystem GetParticles() {
+        return particles;
+    }
+
+    public float GetCooldownCurrent() {
+        return cooldownCurrent;
+    }
+
+    public void SetCooldownCurrent(float num) {
+        cooldownCurrent = num;
+    }
+
+    public float GetCooldownMax() {
+        return cooldownMax;
+    }
 }

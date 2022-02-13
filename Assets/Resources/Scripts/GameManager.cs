@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
     public GameObject deathScreen;
     public Image[] invPanels;
     public Image[] imgPanels;
+    public TextMeshProUGUI[] manaNums;
     public Slider healthBar;
     public Slider manaBar;
     Color defaultInv;
@@ -71,7 +72,6 @@ public class GameManager : MonoBehaviour {
         Magic magic = playerManager.magicInv[playerManager.GetMagicMax() - 1];
         Sprite newSprite = magic.GetImage();
         imgPanels[playerManager.GetMagicMax() - 1].GetComponent<Image>().sprite = newSprite;
-        Debug.Log("Img supposed to be changed " + playerManager.GetMagicMax());
+        manaNums[playerManager.GetMagicMax() - 1].text = magic.GetManaCost().ToString();
     }
-
 }

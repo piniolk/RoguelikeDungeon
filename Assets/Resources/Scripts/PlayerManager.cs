@@ -84,7 +84,7 @@ public class PlayerManager : MonoBehaviour {
     public void AddMagicInfo(Magic newMagic) {
         magicInv[magicMax] = newMagic;
         magicMax++;
-        magicInv[magicMax-1].setSelect(magicMax);
+        magicInv[magicMax-1].SetSelect(magicMax);
     }
 
     public bool CheckMagic(int num) {

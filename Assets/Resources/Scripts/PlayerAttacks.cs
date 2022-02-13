@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlayerAttacks : MonoBehaviour {
     [SerializeField] float bluntDamage = 10;
     [SerializeField] float bluntRange = 10;
-    [SerializeField] float magicDamage = 25;
-    [SerializeField] float magicRange = 25;
-    [SerializeField] float manaConsumed = 10;
+    [SerializeField] float magicDamage;
+    [SerializeField] float magicRange;
+    [SerializeField] float manaConsumed;
     public int magicSelect = 1;
     PlayerManager playerManager;
     GameManager gameManager;
@@ -23,8 +23,7 @@ public class PlayerAttacks : MonoBehaviour {
         if (Input.GetButtonDown("Fire1")) {
             Attack(bluntDamage, bluntRange);
         }
-        if (Input.GetButtonDown("Fire2")) {
-            playerManager = GetComponent<PlayerManager>();
+        if (Input.GetButtonDown("Fire2") && playerManager.CheckMagic(magicSelect)) {
             if (playerManager.ManaUse(manaConsumed)) {
                 Attack(magicDamage, magicRange);
             }
@@ -71,9 +70,9 @@ public class PlayerAttacks : MonoBehaviour {
 
     void UpdateCurrentMagic() {
         Magic newMagic = playerManager.magicInv[magicSelect - 1];
-        magicDamage = newMagic.getDamage();
-        magicRange = newMagic.getRange();
-        manaConsumed = newMagic.getManaCost();
+        magicDamage = newMagic.GetDamage();
+        magicRange = newMagic.GetRange();
+        manaConsumed = newMagic.GetManaCost();
     }
 
 }
