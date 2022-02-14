@@ -9,10 +9,12 @@ public class PlayerMovement : MonoBehaviour {
     public float rotationSpeed;
     public CharacterController player;
     RoomRandomizer roomRandomizer;
+    GameManager gameManager;
 
     // Start is called before the first frame update
     void Start() {
-        roomRandomizer = FindObjectOfType<GameManager>().GetComponent<RoomRandomizer>();
+        gameManager = FindObjectOfType<GameManager>();
+        roomRandomizer = gameManager.GetComponent<RoomRandomizer>();
     }
 
     // Update is called once per frame
@@ -44,16 +46,19 @@ public class PlayerMovement : MonoBehaviour {
 
         if (collision.gameObject.CompareTag("LeftDoor") && roomRandomizer.CheckValidRoom(x, z, "left")) {
             player.GetComponent<Transform>().SetPositionAndRotation(new Vector3 (x - 15, y, z), Quaternion.identity);
+            //gameManager.SpawnEnemies();
         }
         if (collision.gameObject.CompareTag("RightDoor") && roomRandomizer.CheckValidRoom(x, z, "right")) {
             player.GetComponent<Transform>().SetPositionAndRotation(new Vector3 (x + 15, y, z), Quaternion.identity);
+            //gameManager.SpawnEnemies();
         }
         if (collision.gameObject.CompareTag("FDoor") && roomRandomizer.CheckValidRoom(x, z, "f")) {
             player.GetComponent<Transform>().SetPositionAndRotation(new Vector3 (x, y, z + 15), Quaternion.identity);
+            //gameManager.SpawnEnemies();
         }
         if (collision.gameObject.CompareTag("BDoor") && roomRandomizer.CheckValidRoom(x, z, "b")) {
             player.GetComponent<Transform>().SetPositionAndRotation(new Vector3 (x, y, z - 15), Quaternion.identity);
+            //gameManager.SpawnEnemies();
         }
     }
-
 }

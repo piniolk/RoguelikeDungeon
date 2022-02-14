@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
     public TextMeshProUGUI healthNum;
     public TextMeshProUGUI manaNum;
     public GameObject deathScreen;
+    public GameObject[] enemyTypes;
     public Image[] invPanels;
     public Image[] imgPanels;
     public TextMeshProUGUI[] manaNums;
@@ -76,5 +77,26 @@ public class GameManager : MonoBehaviour {
         Sprite newSprite = magic.GetImage();
         imgPanels[playerManager.GetMagicMax() - 1].GetComponent<Image>().sprite = newSprite;
         manaNums[playerManager.GetMagicMax() - 1].text = magic.GetManaCost().ToString();
+    }
+
+    public void SpawnEnemies() {
+        KillAllEnemies();
+        int[] nums = roomRandomizer.CheckRoomPos(player.transform.position.x, player.transform.position.z);
+        int x = nums[0];
+        int z = nums[1];
+        GameObject room = roomRandomizer.GetRoom(x, z);
+        GameObject[] spawns = room.GetComponent<RoomSpawn>().GetSpawns();
+        for (int i = 0; i < Random.Range(0, 5); i++) {
+            Vector3 vec = spawns[Random.Range(0, spawns.Length - 1)].transform.position;
+            vec.y = 4.34f;
+            Instantiate(enemyTypes[Random.Range(0, enemyTypes.Length-1)], vec, Quaternion.identity);
+        }
+    }
+
+    private void KillAllEnemies() {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies) {
+            Destroy(enemy);
+        }
     }
 }

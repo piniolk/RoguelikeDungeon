@@ -34,27 +34,42 @@ public class RoomRandomizer : MonoBehaviour {
         
     }
 
+    public int[] CheckRoomPos(float posx, float posz) {
+        float x = (posx + 52) / 105;
+        int newx = (int)System.Math.Floor(x);
+        float z = (posz + 52) / 105;
+        int newz = (int)System.Math.Floor(z);
+        int[] nums = new int[2];
+        nums[0] = newx;
+        nums[1] = newz;
+        return nums;
+    }
+
+    public GameObject GetRoom(int x, int z) {
+        return roomLayout[x, z];
+    }
+
     public bool CheckValidRoom(float posx, float posz, string direction) {
-        float x = posx / 105;
-        int newx = (int)System.Math.Round(x);
-        float z = posz / 105;
-        int newz = (int)System.Math.Round(x);
+        int [] nums = CheckRoomPos(posx, posz);
+        int x = nums[0];
+        int z = nums[1];
+
         bool result;
 
         if(direction == "left") {
-            if (x < 0) {
+            if (x < 1) {
                 result = false;
             } else {
                 result = true;
             }
         } else if(direction == "right") {
-            if (x > roomLayout.GetLength(0) - 1) {
+            if (x > roomLayout.GetLength(0) - 2) {
                 result = false;
             } else {
                 result = true;
             }
         } else if(direction == "b") {
-            if (z < 0) {
+            if (z < 1) {
                 result = false;
             } else {
                 result = true;

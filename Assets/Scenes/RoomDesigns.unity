@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 7d0b8b5eef070804da7302da847b928c, type: 2}
 --- !u!1 &105653945
 GameObject:
   m_ObjectHideFlags: 0
@@ -1266,10 +1266,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Emperor's Hall
       objectReference: {fileID: 0}
-    - target: {fileID: 5182092290278702632, guid: 335434315a25e364ea5047c9b6c1cb61, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5182092290278702633, guid: 335434315a25e364ea5047c9b6c1cb61, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1370,10 +1366,6 @@ PrefabInstance:
     - target: {fileID: 6023717803866540739, guid: e425e7685af27b042b446faadc5ef845, type: 3}
       propertyPath: m_Name
       value: Library
-      objectReference: {fileID: 0}
-    - target: {fileID: 6023717803866540739, guid: e425e7685af27b042b446faadc5ef845, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e425e7685af27b042b446faadc5ef845, type: 3}
