@@ -20,7 +20,7 @@ public class EnemyManager : MonoBehaviour {
 
     // Update is called once per frame
     void LateUpdate() {
-        GetComponent<NavMeshAgent>().destination = player.transform.position;
+        //GetComponent<NavMeshAgent>().destination = player.transform.position;
     }
 
     public void DamageTaken(float damage) {
