@@ -64,9 +64,11 @@
     <Compile Include="Assets\Resources\Scripts\PickupHealth.cs" />
     <Compile Include="Assets\Resources\Scripts\DeathMenu.cs" />
     <Compile Include="Assets\Resources\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Resources\Scripts\ScriptableObjects\Magic.cs" />
     <Compile Include="Assets\Resources\Scripts\Settings.cs" />
     <Compile Include="Assets\Resources\Scripts\RoomRandomizer.cs" />
-    <Compile Include="Assets\Resources\Scripts\ScriptableObjects\Magic.cs" />
+    <Compile Include="Assets\Resources\Scripts\MusicControl.cs" />
+    <Compile Include="Assets\Resources\Scripts\FindMusicObject.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Imports\TextMesh Pro\Shaders\TMPro.cginc" />

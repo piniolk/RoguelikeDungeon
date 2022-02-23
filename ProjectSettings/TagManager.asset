@@ -11,6 +11,8 @@ TagManager:
   - RightDoor
   - FDoor
   - BDoor
+  - GameMusic
+  - MusicControl
   layers:
   - Default
   - TransparentFX
