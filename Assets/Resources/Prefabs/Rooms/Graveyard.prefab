@@ -2719,6 +2719,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3237701199789675038}
+  - component: {fileID: 8829059619900701385}
   m_Layer: 0
   m_Name: Graveyard
   m_TagString: Untagged
@@ -2747,6 +2748,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8829059619900701385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3237701199789675039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7252c60bc3772d74ca4d813320fb03ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawns:
+  - {fileID: 6346177338818007519}
+  - {fileID: 1973695128388889753}
+  - {fileID: 3401855353162898736}
+  - {fileID: 7121127149805089438}
 --- !u!1 &3237701199799547420
 GameObject:
   m_ObjectHideFlags: 0

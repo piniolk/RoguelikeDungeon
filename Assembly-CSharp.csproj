@@ -53,22 +53,24 @@
     <UnityVersion>2020.3.18f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Resources\Scripts\EnemySpawns.cs" />
     <Compile Include="Assets\Resources\Scripts\ScriptableObjects\RoomInfo.cs" />
     <Compile Include="Assets\Resources\Scripts\PickupMagic.cs" />
     <Compile Include="Assets\Resources\Scripts\GameManager.cs" />
     <Compile Include="Assets\Resources\Scripts\CameraFollowPlayer.cs" />
     <Compile Include="Assets\Resources\Scripts\MainManu.cs" />
+    <Compile Include="Assets\Resources\Scripts\FindMusicObject.cs" />
     <Compile Include="Assets\Resources\Scripts\PlayerAttacks.cs" />
     <Compile Include="Assets\Resources\Scripts\PlayerManager.cs" />
     <Compile Include="Assets\Resources\Scripts\EnemyManager.cs" />
     <Compile Include="Assets\Resources\Scripts\PickupHealth.cs" />
+    <Compile Include="Assets\Resources\Scripts\Spawns.cs" />
     <Compile Include="Assets\Resources\Scripts\DeathMenu.cs" />
     <Compile Include="Assets\Resources\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Resources\Scripts\ScriptableObjects\Magic.cs" />
     <Compile Include="Assets\Resources\Scripts\Settings.cs" />
     <Compile Include="Assets\Resources\Scripts\RoomRandomizer.cs" />
     <Compile Include="Assets\Resources\Scripts\MusicControl.cs" />
-    <Compile Include="Assets\Resources\Scripts\FindMusicObject.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Imports\TextMesh Pro\Shaders\TMPro.cginc" />

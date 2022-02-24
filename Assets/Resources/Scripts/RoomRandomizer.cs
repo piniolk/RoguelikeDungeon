@@ -69,4 +69,19 @@ public class RoomRandomizer : MonoBehaviour {
 
         return result;
     }
+
+    public int[] CheckRoomPos(float posx, float posz) {
+        float x = (posx + 52) / 105;
+        int newx = (int)System.Math.Floor(x);
+        float z = (posz + 52) / 105;
+        int newz = (int)System.Math.Floor(z);
+        int[] nums = new int[2];
+        nums[0] = newx;
+        nums[1] = newz;
+        return nums;
+    }
+
+    public GameObject GetRoom(int x, int z) {
+        return roomLayout[x, z];
+    }
 }
