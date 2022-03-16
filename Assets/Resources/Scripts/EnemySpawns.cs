@@ -21,7 +21,7 @@ public class EnemySpawns : MonoBehaviour {
         int z = nums[1];
         GameObject room = roomRandomizer.GetRoom(x, z);
         GameObject[] spawns = room.GetComponent<Spawns>().GetSpawns();
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < Random.Range(1,4); i++) {
             Vector3 vecOriginal = spawns[Random.Range(0, spawns.Length - 1)].transform.position;
             Vector3 vec;
             Vector3 offset = room.transform.position;
