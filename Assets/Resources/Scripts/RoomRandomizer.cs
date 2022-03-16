@@ -28,10 +28,8 @@ public class RoomRandomizer : MonoBehaviour {
         for (int i = 0; i < roomLayout.GetLength(0); i++) {
             for (int j = 0; j < roomLayout.GetLength(1); j++) {
                 Vector3 location = new Vector3(i*105, 0, j*105 + 40);
-                //Instantiate(roomLayout[i, j], location, Quaternion.identity);   
                 roomLayout[i, j] = Instantiate(roomPrefabs[Random.Range(0, roomPrefabs.Length)], location, Quaternion.identity) as GameObject;   
                 roomLayout[i, j].transform.position = location;
-                //Debug.Log("Room " + i + ", " + j + ": " + roomLayout[i, j].transform.position.x + ", " + roomLayout[i, j].transform.position.z);
             }
         }
         
@@ -73,17 +71,6 @@ public class RoomRandomizer : MonoBehaviour {
         return result;
     }
 
-   /* public int[] CheckRoomPos(float posx, float posz) {
-        float x = (posx + 52) / 105;
-        int newx = (int)System.Math.Floor(x);
-        float z = (posz + 52) / 105;
-        int newz = (int)System.Math.Floor(z);
-        int[] nums = new int[2];
-        nums[0] = newx;
-        nums[1] = newz;
-        return nums;
-    }*/
-
     public int[] CheckRoomPos(float posx, float posz) {
         float x = (posx + 52) / 105;
         int newx = (int)System.Math.Floor(x);
@@ -96,15 +83,6 @@ public class RoomRandomizer : MonoBehaviour {
     }
 
     public GameObject GetRoom(int x, int z) {
-        Debug.Log("Room 2: " + x + " " + z);
-        Debug.Log("room coords 2: " + ":" + " x: " + roomLayout[x, z].transform.position.x + ", z: " + roomLayout[x, z].transform.position.z);
-        Debug.Log("____________________________________");
-        for (int i = 0; i < roomLayout.GetLength(0); i++) {
-            for (int j = 0; j < roomLayout.GetLength(1); j++) {
-                Debug.Log("Room " + i + ", " + j + ": " + roomLayout[i, j].transform.position.x + ", " + roomLayout[i, j].transform.position.z);
-            }
-        }
-        Debug.Log("____________________________________");
         return roomLayout[x, z];
     }
 }
