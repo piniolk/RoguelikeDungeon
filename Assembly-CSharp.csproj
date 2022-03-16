@@ -71,6 +71,7 @@
     <Compile Include="Assets\Resources\Scripts\Settings.cs" />
     <Compile Include="Assets\Resources\Scripts\RoomRandomizer.cs" />
     <Compile Include="Assets\Resources\Scripts\MusicControl.cs" />
+    <Compile Include="Assets\Resources\Scripts\DontDestroyOnLoad.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Imports\TextMesh Pro\Shaders\TMPro.cginc" />
