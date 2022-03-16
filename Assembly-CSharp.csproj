@@ -53,6 +53,7 @@
     <UnityVersion>2020.3.18f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Resources\Scripts\DontDestroyOnLoad.cs" />
     <Compile Include="Assets\Resources\Scripts\EnemySpawns.cs" />
     <Compile Include="Assets\Resources\Scripts\ScriptableObjects\RoomInfo.cs" />
     <Compile Include="Assets\Resources\Scripts\PickupMagic.cs" />
@@ -71,7 +72,7 @@
     <Compile Include="Assets\Resources\Scripts\Settings.cs" />
     <Compile Include="Assets\Resources\Scripts\RoomRandomizer.cs" />
     <Compile Include="Assets\Resources\Scripts\MusicControl.cs" />
-    <Compile Include="Assets\Resources\Scripts\DontDestroyOnLoad.cs" />
+    <Compile Include="Assets\Resources\Scripts\PauseMenu.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Imports\TextMesh Pro\Shaders\TMPro.cginc" />

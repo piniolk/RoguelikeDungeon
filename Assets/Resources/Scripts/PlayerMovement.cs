@@ -9,14 +9,22 @@ public class PlayerMovement : MonoBehaviour {
     public float rotationSpeed;
     public CharacterController player;
     RoomRandomizer roomRandomizer;
+    GameManager gameManager;
 
     // Start is called before the first frame update
     void Start() {
         roomRandomizer = FindObjectOfType<GameManager>().GetComponent<RoomRandomizer>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
     void Update() {
+
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            gameManager.GetComponent<PauseMenu>().Pause();
+            Debug.Log("pause");
+        } 
+
         if (Input.GetKey(KeyCode.LeftShift)) {
             speed = runSpeed;
         } else {

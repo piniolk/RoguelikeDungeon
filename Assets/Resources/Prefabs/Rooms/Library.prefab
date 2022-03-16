@@ -3946,7 +3946,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6023717803866540739}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 210, y: 0, z: 40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6023717803724456438}
@@ -3974,6 +3974,7 @@ MonoBehaviour:
   - {fileID: 102478102}
   - {fileID: 1858290977}
   - {fileID: 959754694}
+  enemyPrefabs: []
 --- !u!1 &6023717803958330608
 GameObject:
   m_ObjectHideFlags: 0

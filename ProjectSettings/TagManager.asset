@@ -13,6 +13,7 @@ TagManager:
   - BDoor
   - GameMusic
   - MusicControl
+  - PauseMenu
   layers:
   - Default
   - TransparentFX
