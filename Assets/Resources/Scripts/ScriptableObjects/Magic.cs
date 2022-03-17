@@ -15,6 +15,7 @@ public class Magic : ScriptableObject {
     [SerializeField] private int select;
     [SerializeField] private Sprite image;
     [SerializeField] private GameObject particles;
+    [SerializeField] private AudioClip audioClip;
 
     void Start() {
         Debug.Log("Reset");
@@ -64,5 +65,9 @@ public class Magic : ScriptableObject {
 
     public float GetCooldownMax() {
         return cooldownMax;
+    }
+
+    public AudioClip GetAudioClip() {
+        return audioClip;
     }
 }

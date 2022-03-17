@@ -8,6 +8,11 @@ public class PlayerManager : MonoBehaviour {
     [SerializeField] float mana = 100;
     [SerializeField] float maxMana = 100;
     int magicMax = 0;
+    AudioSource audioSource;
+    public AudioClip audioHurt;
+    public AudioClip audioMagicPickUp;
+    public AudioClip audioPotionPickUp;
+    private Animator playerAnimator;
 
     GameManager gameManager;
 
@@ -17,26 +22,32 @@ public class PlayerManager : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
+        audioSource = GetComponent<AudioSource>();
         gameManager = FindObjectOfType<GameManager>();
         playerAttacks = GetComponent<PlayerAttacks>();
+        playerAnimator = this.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update() {
 
-    }
+    } 
 
-    private void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.CompareTag("Enemy")) {
-            DamageTaken(10);
-        }
+    public void Hit(float damage) {
+        DamageTaken(damage);
+        playerAnimator.SetBool("isHit", true);
+        playerAnimator.SetBool("isHit", false);
     }
 
     void DamageTaken(float damage) {
         Debug.Log(damage + " damage Taken");
         health -= damage;
+        audioSource.clip = audioHurt;
+        audioSource.Play();
         gameManager.UpdateHealthNum(health);
         if (health <= 0) {
+
+            playerAnimator.SetTrigger("isDead");
             Debug.Log("Dead");
             gameManager.DeathScreenOn();
         }
@@ -52,6 +63,8 @@ public class PlayerManager : MonoBehaviour {
             health += heal;
         }
         gameManager.UpdateHealthNum(health);
+        audioSource.clip = audioPotionPickUp;
+        audioSource.Play();
         return true;
     }
 
@@ -85,10 +98,14 @@ public class PlayerManager : MonoBehaviour {
             mana += amount;
         }
         gameManager.UpdateManaNum(mana);
+        audioSource.clip = audioPotionPickUp;
+        audioSource.Play();
         return true;
     }
 
     public void AddMagicInfo(Magic newMagic) {
+        audioSource.clip = audioMagicPickUp;
+        audioSource.Play();
         magicInv[magicMax] = newMagic;
         magicMax++;
         magicInv[magicMax-1].SetSelect(magicMax);

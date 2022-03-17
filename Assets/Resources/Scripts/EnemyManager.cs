@@ -6,17 +6,24 @@ using UnityEngine.UI;
 public class EnemyManager : MonoBehaviour {
     public float health = 50;
     public float damage = 10;
-    float range = 5;
     public Slider healthBar;
     [SerializeField] GameObject player;
     private Vector3 targetVec;
     [SerializeField] private float speed = 15f;
 
+    private Animator enemyAnimator;
+    private bool playerInReach;
+    private float attackDelayTimer;
+    private float attackAnimStartDelay = .2f;
+    private float delayBetweenAttacks = 3f;
+
     // Start is called before the first frame update
     void Start() {
+        attackDelayTimer = 0f;
         healthBar.maxValue = health;
         healthBar.value = health;
         player = GameObject.FindGameObjectWithTag("Player");
+        enemyAnimator = this.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -24,13 +31,23 @@ public class EnemyManager : MonoBehaviour {
         targetVec = player.transform.position;
 
         Movement();
+
+        if (GetComponent<Rigidbody>().velocity.magnitude > 1) {
+            enemyAnimator.SetBool("isMoving", true);
+        } else {
+            enemyAnimator.SetBool("isMoving", false);
+        }
     }
 
     public void DamageTaken(float damage) {
         health -= damage;
         healthBar.value = health;
         if (health <= 0) {
-            Destroy(gameObject);
+            enemyAnimator.SetTrigger("isDead");
+            Destroy(gameObject, 10f);
+            speed = 0;
+            Destroy(GetComponent<EnemyManager>());
+            Destroy(GetComponent<CapsuleCollider>());
         }
     }
 
@@ -43,11 +60,31 @@ public class EnemyManager : MonoBehaviour {
         this.transform.Translate(transform.forward * speed * Time.deltaTime);
     }
 
-    void Wander() {
-        // pick random direction
-        Vector3 direction = new Vector3(Random.Range(-5,5), 0, Random.Range(-5, 5));
-        // keep walking
-        //this.transform.Translate((direction.x * speed * Time.deltaTime), 0, (direction.z * speed * Time.deltaTime));
-        transform.LookAt(player.transform.position, Vector3.up);
+    private void OnCollisionEnter(Collision collision) {
+        if (collision.gameObject == player) {
+            playerInReach = true;
+        }
+    }
+
+    private void OnCollisionStay(Collision collision) {
+        if (playerInReach) {
+            attackDelayTimer += Time.deltaTime;
+        }
+
+        if (attackDelayTimer >= delayBetweenAttacks - attackAnimStartDelay && attackDelayTimer <= delayBetweenAttacks && playerInReach) {
+            enemyAnimator.SetTrigger("isAttacking");
+        }
+
+        if (attackDelayTimer >= delayBetweenAttacks && playerInReach) {
+            player.GetComponent<PlayerManager>().Hit(damage);
+            attackDelayTimer = 0;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision) {
+        if (collision.gameObject == player) {
+            playerInReach = false;
+            attackDelayTimer = 0;
+        }
     }
 }

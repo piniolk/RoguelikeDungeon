@@ -14,6 +14,7 @@ public class PlayerAttacks : MonoBehaviour {
     GameManager gameManager;
     [SerializeField] GameObject particles;
     GameObject particlesMagic;
+    AudioClip audioClip;
 
     // Start is called before the first frame update
     void Start() {
@@ -31,6 +32,8 @@ public class PlayerAttacks : MonoBehaviour {
         }
         if (Input.GetButtonDown("Fire2") && playerManager.CheckMagic(magicSelect)) {
             if (playerManager.ManaUse(manaConsumed)) {
+                player.GetComponent<AudioSource>().clip = audioClip;
+                player.GetComponent<AudioSource>().Play();
                 Attack(magicDamage, magicRange);
                 GameObject probaParticleClone = Instantiate(particlesMagic, player.transform.position, player.transform.rotation) as GameObject;
                 Destroy(probaParticleClone, 3);
@@ -80,6 +83,7 @@ public class PlayerAttacks : MonoBehaviour {
         magicRange = newMagic.GetRange();
         manaConsumed = newMagic.GetManaCost();
         particlesMagic = newMagic.GetParticles();
+        audioClip = newMagic.GetAudioClip();
     }
 
 }
