@@ -74,14 +74,18 @@ public class PlayerManager : MonoBehaviour {
         }
     }
 
-    public void ManaAdd(float amount) {
-        if (mana + amount > maxMana) {
+    public bool ManaAdd(float amount) {
+        if (mana >= maxMana) {
+            return false;
+        }
+        else if (mana + amount > maxMana) {
             float temp = maxMana - mana;
             mana = maxMana;
         } else {
             mana += amount;
         }
         gameManager.UpdateManaNum(mana);
+        return true;
     }
 
     public void AddMagicInfo(Magic newMagic) {
