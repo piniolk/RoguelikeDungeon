@@ -30,8 +30,9 @@ public class PlayerAttacks : MonoBehaviour {
             GameObject probaParticleClone = Instantiate(particles, player.transform.position, player.transform.rotation) as GameObject;
             Destroy(probaParticleClone, 3);
         }
-        if (Input.GetButtonDown("Fire2") && playerManager.CheckMagic(magicSelect)) {
+        if (Input.GetButtonDown("Fire2") && playerManager.CheckMagic(magicSelect) && playerManager.magicInv[magicSelect - 1].IsCoolDownDone()) {
             if (playerManager.ManaUse(manaConsumed)) {
+                gameManager.Stuff(magicSelect);
                 player.GetComponent<AudioSource>().clip = audioClip;
                 player.GetComponent<AudioSource>().Play();
                 Attack(magicDamage, magicRange);

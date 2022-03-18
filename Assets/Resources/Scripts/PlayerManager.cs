@@ -48,7 +48,6 @@ public class PlayerManager : MonoBehaviour {
         if (health <= 0) {
 
             playerAnimator.SetTrigger("isDead");
-            Debug.Log("Dead");
             gameManager.DeathScreenOn();
         }
     }
@@ -78,7 +77,6 @@ public class PlayerManager : MonoBehaviour {
 
     public bool ManaUse(float amount) {
         if (mana - amount < 0) {
-            Debug.Log("Not enough mana");
             return false;
         } else {
             mana -= amount;

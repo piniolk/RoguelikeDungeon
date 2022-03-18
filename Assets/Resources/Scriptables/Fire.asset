@@ -16,7 +16,7 @@ MonoBehaviour:
   range: 25
   damage: 25
   manaConsumed: 10
-  cooldownMax: 0
+  cooldownMax: 2
   cooldownCurrent: 0
   select: 3
   image: {fileID: 21300000, guid: 9afb5b26d1607e64da856315f9e8beff, type: 3}

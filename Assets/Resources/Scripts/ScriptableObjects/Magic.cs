@@ -70,4 +70,11 @@ public class Magic : ScriptableObject {
     public AudioClip GetAudioClip() {
         return audioClip;
     }
+
+    public bool IsCoolDownDone() {
+        if(cooldownCurrent == 0) {
+            return true;
+        }
+        return false;
+    }
 }

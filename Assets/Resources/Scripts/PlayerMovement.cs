@@ -22,7 +22,6 @@ public class PlayerMovement : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Escape)) {
             gameManager.GetComponent<PauseMenu>().Pause();
-            Debug.Log("pause");
         } 
 
         if (Input.GetKey(KeyCode.LeftShift)) {

@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
     public GameObject deathScreen;
     public Image[] invPanels;
     public Image[] imgPanels;
+    public Image[] cooldownPanels;
     public TextMeshProUGUI[] manaNums;
     public Slider healthBar;
     public Slider manaBar;
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour {
     GameObject player;
     PlayerManager playerManager;
     RoomRandomizer roomRandomizer;
+    private float scaleMax = 1.3f;
 
     // Start is called before the first frame update
     void Start() {
@@ -34,7 +36,7 @@ public class GameManager : MonoBehaviour {
         healthBar.maxValue = healthN;
         healthBar.value = healthN;
         manaBar.maxValue = manaN;
-        manaBar.value = manaN;
+        manaBar.value = manaN; 
     }
 
     // Update is called once per frame
@@ -76,5 +78,31 @@ public class GameManager : MonoBehaviour {
         Sprite newSprite = magic.GetImage();
         imgPanels[playerManager.GetMagicMax() - 1].GetComponent<Image>().sprite = newSprite;
         manaNums[playerManager.GetMagicMax() - 1].text = magic.GetManaCost().ToString();
+    }
+
+    public void Stuff(int select) {
+        StartCoroutine(DoCooldownImg(select));
+    }
+
+    public IEnumerator DoCooldownImg(int select) {
+        float scaleNum = scaleMax;
+        Vector3 scale = new Vector3(scaleNum, scaleNum, scaleNum);
+        cooldownPanels[select - 1].transform.localScale = scale;
+        float percentage = 1f;
+        float seconds = playerManager.magicInv[select - 1].GetCooldownMax();
+        playerManager.magicInv[select - 1].SetCooldownCurrent(playerManager.magicInv[select - 1].GetCooldownMax());
+        float cooldown = playerManager.magicInv[select - 1].GetCooldownCurrent();
+        seconds *= .1f;
+        while (percentage >= 0f) {
+            scaleNum -= .1f;
+            percentage -= .1f;
+            cooldown -= playerManager.magicInv[select - 1].GetCooldownMax() * .1f;
+            playerManager.magicInv[select - 1].SetCooldownCurrent(cooldown);
+            scale = new Vector3(scaleNum, scaleNum, scaleNum);
+            yield return new WaitForSeconds(seconds);
+            cooldownPanels[select - 1].transform.localScale = scale;
+        }
+        cooldownPanels[select - 1].transform.localScale = new Vector3(0,0,0);
+        playerManager.magicInv[select - 1].SetCooldownCurrent(0);
     }
 }
