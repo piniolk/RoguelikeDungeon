@@ -16,9 +16,9 @@ MonoBehaviour:
   range: 8
   damage: 50
   manaConsumed: 50
-  cooldownMax: 5
+  cooldownMax: 6
   cooldownCurrent: 0
-  select: 1
+  select: 2
   image: {fileID: 21300000, guid: a47bae381dafbc344b4425463d7b99a9, type: 3}
   particles: {fileID: 3822912676969039905, guid: dc1b5df4d7ad24242a216630d264d77d, type: 3}
   audioClip: {fileID: 8300000, guid: 9a1a54083e5975f449edb84eaa8d237c, type: 3}

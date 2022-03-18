@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour {
         StartCoroutine(DoCooldownImg(select));
     }
 
-    public IEnumerator DoCooldownImg(int select) {
+   /* public IEnumerator DoCooldownImg(int select) {
         float scaleNum = scaleMax;
         Vector3 scale = new Vector3(scaleNum, scaleNum, scaleNum);
         cooldownPanels[select - 1].transform.localScale = scale;
@@ -100,6 +100,28 @@ public class GameManager : MonoBehaviour {
             playerManager.magicInv[select - 1].SetCooldownCurrent(cooldown);
             scale = new Vector3(scaleNum, scaleNum, scaleNum);
             yield return new WaitForSeconds(seconds);
+            cooldownPanels[select - 1].transform.localScale = scale;
+        }
+        cooldownPanels[select - 1].transform.localScale = new Vector3(0,0,0);
+        playerManager.magicInv[select - 1].SetCooldownCurrent(0);
+    }*/
+
+    public IEnumerator DoCooldownImg(int select) {
+        float scaleNum = scaleMax;
+        Vector3 scale = new Vector3(scaleNum, scaleNum, scaleNum);
+        cooldownPanels[select - 1].transform.localScale = scale;
+        float percentage = 1f;
+        float seconds = playerManager.magicInv[select - 1].GetCooldownMax();
+        playerManager.magicInv[select - 1].SetCooldownCurrent(playerManager.magicInv[select - 1].GetCooldownMax());
+        float cooldown = playerManager.magicInv[select - 1].GetCooldownCurrent();
+        seconds *= .1f;
+        while (percentage >= 0f) {
+            scaleNum -= .1f;
+            percentage -= .1f;
+            cooldown -= playerManager.magicInv[select - 1].GetCooldownMax() * .1f;
+            playerManager.magicInv[select - 1].SetCooldownCurrent(cooldown);
+            scale = new Vector3(scaleNum, scaleNum, scaleNum);
+            yield return new WaitForSeconds(seconds * Time.deltaTime);
             cooldownPanels[select - 1].transform.localScale = scale;
         }
         cooldownPanels[select - 1].transform.localScale = new Vector3(0,0,0);

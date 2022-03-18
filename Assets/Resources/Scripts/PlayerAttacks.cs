@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAttacks : MonoBehaviour {
-    [SerializeField] float bluntDamage = 10;
+    [SerializeField] float bluntDamage = 5;
     [SerializeField] float bluntRange = 10;
     [SerializeField] float magicDamage;
     [SerializeField] float magicRange;
@@ -15,6 +15,7 @@ public class PlayerAttacks : MonoBehaviour {
     [SerializeField] GameObject particles;
     GameObject particlesMagic;
     AudioClip audioClip;
+    bool cooldownB = true;
 
     // Start is called before the first frame update
     void Start() {
@@ -25,8 +26,13 @@ public class PlayerAttacks : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (Input.GetButtonDown("Fire1")) {
-            Attack(bluntDamage, bluntRange); 
+        if (cooldownB == false) {
+            StartCoroutine(Wait(2f * Time.deltaTime));
+            cooldownB = true;
+        }
+        if (Input.GetButtonDown("Fire1") && cooldownB) {
+            cooldownB = false;
+            Attack(bluntDamage, bluntRange);
             GameObject probaParticleClone = Instantiate(particles, player.transform.position, player.transform.rotation) as GameObject;
             Destroy(probaParticleClone, 3);
         }
@@ -42,7 +48,7 @@ public class PlayerAttacks : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.Alpha1) && playerManager.CheckMagic(1)) {
             magicSelect = 1;
-            gameManager.UpdateInv(1); 
+            gameManager.UpdateInv(1);
             UpdateCurrentMagic();
         }
         if (Input.GetKeyDown(KeyCode.Alpha2) && playerManager.CheckMagic(2)) {
@@ -87,4 +93,7 @@ public class PlayerAttacks : MonoBehaviour {
         audioClip = newMagic.GetAudioClip();
     }
 
+    private IEnumerator Wait(float sec) {
+        yield return new WaitForSeconds(sec);
+    }
 }

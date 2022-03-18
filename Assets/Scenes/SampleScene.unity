@@ -2867,6 +2867,10 @@ PrefabInstance:
       propertyPath: particles
       value: 
       objectReference: {fileID: 5201241432518495325, guid: d22f174585bda0946af4de734b689613, type: 3}
+    - target: {fileID: 2310325368759803554, guid: 45288819fde2143449a96207b14db0bb, type: 3}
+      propertyPath: bluntDamage
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5212920724540503326, guid: 45288819fde2143449a96207b14db0bb, type: 3}
       propertyPath: health
       value: 100
@@ -6939,6 +6943,26 @@ PrefabInstance:
     - target: {fileID: 6787423857474303913, guid: 146581683d5cc6a4689a8285c8e9d5e9, type: 3}
       propertyPath: m_Name
       value: GruntPolyart
+      objectReference: {fileID: 0}
+    - target: {fileID: 6787423857474303914, guid: 146581683d5cc6a4689a8285c8e9d5e9, type: 3}
+      propertyPath: m_Height
+      value: 2.381937
+      objectReference: {fileID: 0}
+    - target: {fileID: 6787423857474303914, guid: 146581683d5cc6a4689a8285c8e9d5e9, type: 3}
+      propertyPath: m_Radius
+      value: 1.145299
+      objectReference: {fileID: 0}
+    - target: {fileID: 6787423857474303914, guid: 146581683d5cc6a4689a8285c8e9d5e9, type: 3}
+      propertyPath: m_Center.x
+      value: -0.0581789
+      objectReference: {fileID: 0}
+    - target: {fileID: 6787423857474303914, guid: 146581683d5cc6a4689a8285c8e9d5e9, type: 3}
+      propertyPath: m_Center.y
+      value: 0.92544246
+      objectReference: {fileID: 0}
+    - target: {fileID: 6787423857474303914, guid: 146581683d5cc6a4689a8285c8e9d5e9, type: 3}
+      propertyPath: m_Center.z
+      value: 0.14159346
       objectReference: {fileID: 0}
     - target: {fileID: 7063338526193750217, guid: 146581683d5cc6a4689a8285c8e9d5e9, type: 3}
       propertyPath: m_AnchorMax.x

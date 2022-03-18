@@ -44,7 +44,7 @@ public class EnemyManager : MonoBehaviour {
         healthBar.value = health;
         if (health <= 0) {
             enemyAnimator.SetTrigger("isDead");
-            Destroy(gameObject, 10f);
+            Destroy(gameObject, 5f);
             speed = 0;
             Destroy(GetComponent<EnemyManager>());
             Destroy(GetComponent<CapsuleCollider>());
