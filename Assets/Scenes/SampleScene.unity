@@ -6981,6 +6981,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6368028838369971613, guid: 6bad664dca85cf8409d47c6d42d7c447, type: 3}
+      propertyPath: roomPrefabs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6368028838369971613, guid: 6bad664dca85cf8409d47c6d42d7c447, type: 3}
+      propertyPath: roomPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 7606321773148716954, guid: 09541d66d61bb304daf51819322800df, type: 3}
     - target: {fileID: 8363044475761023224, guid: 6bad664dca85cf8409d47c6d42d7c447, type: 3}
       propertyPath: manaBar
       value: 

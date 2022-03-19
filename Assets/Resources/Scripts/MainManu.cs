@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainManu : MonoBehaviour {
     public GameObject ControlsPanel;
+    public GameObject CreditsPanel;
     public GameObject SettingsPanel;
     public GameObject TitlePanel;
 
@@ -20,6 +21,16 @@ public class MainManu : MonoBehaviour {
 
     public void ControlsClose() {
         ControlsPanel.SetActive(false);
+        TitlePanel.SetActive(true);
+    }
+
+    public void Credits() {
+        TitlePanel.SetActive(false);
+        CreditsPanel.SetActive(true);
+    }
+
+    public void CreditsClose() {
+        CreditsPanel.SetActive(false);
         TitlePanel.SetActive(true);
     }
 
