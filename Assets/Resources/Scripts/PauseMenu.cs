@@ -18,7 +18,8 @@ public class PauseMenu : MonoBehaviour {
 
     public void GoToTitle() {
         Time.timeScale = 1;
-        pauseMenu.SetActive(false);
+        GameObject[] gameObj = GameObject.FindGameObjectsWithTag("GameManager");
+        Destroy(this.gameObject);
         SceneManager.LoadScene(0);
     }
 }

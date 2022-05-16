@@ -12,6 +12,8 @@ public class DeathMenu : MonoBehaviour {
     }
     public void TitleScreen() {
         gameManager.DeathScreenOff();
+        GameObject[] gameObj = GameObject.FindGameObjectsWithTag("GameManager");
+        Destroy(this.gameObject);
         SceneManager.LoadScene("Title");
     }
 }

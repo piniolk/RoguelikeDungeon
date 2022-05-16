@@ -16,6 +16,8 @@ TagManager:
   - PauseMenu
   - Wall
   - Mana
+  - LevelNum
+  - EndLevelPoint
   layers:
   - Default
   - TransparentFX

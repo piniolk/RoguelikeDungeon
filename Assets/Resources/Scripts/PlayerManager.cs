@@ -21,11 +21,12 @@ public class PlayerManager : MonoBehaviour {
     public Magic[] magicInv;
 
     // Start is called before the first frame update
-    void Start() {
+    void Awake() {
         audioSource = GetComponent<AudioSource>();
         gameManager = FindObjectOfType<GameManager>();
         playerAttacks = GetComponent<PlayerAttacks>();
         playerAnimator = this.GetComponent<Animator>();
+        audioSource.volume = PlayerPrefs.GetFloat("SoundVolume", 1f);
     }
 
     // Update is called once per frame

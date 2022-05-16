@@ -4350,7 +4350,6 @@ MonoBehaviour:
   - {fileID: 3451797243263055384}
   - {fileID: 153852650731151421}
   - {fileID: 6133785491290234957}
-  - {fileID: 0}
   enemyPrefabs: []
 --- !u!1 &7606321773390733236
 GameObject:

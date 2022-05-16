@@ -13,8 +13,8 @@ public class PlayerMovement : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        roomRandomizer = FindObjectOfType<GameManager>().GetComponent<RoomRandomizer>();
         gameManager = FindObjectOfType<GameManager>();
+        roomRandomizer = gameManager.GetComponent<RoomRandomizer>();
     }
 
     // Update is called once per frame
@@ -51,20 +51,29 @@ public class PlayerMovement : MonoBehaviour {
 
         if (collision.gameObject.CompareTag("LeftDoor") && roomRandomizer.CheckValidRoom(x, z, "left")) {
             player.GetComponent<Transform>().SetPositionAndRotation(new Vector3 (x - 15, y, z), Quaternion.identity);
-            FindObjectOfType<GameManager>().GetComponent<EnemySpawns>().SpawnEnemies();
+            UponRoomEntrance();
         }
         if (collision.gameObject.CompareTag("RightDoor") && roomRandomizer.CheckValidRoom(x, z, "right")) {
             player.GetComponent<Transform>().SetPositionAndRotation(new Vector3 (x + 15, y, z), Quaternion.identity);
-            FindObjectOfType<GameManager>().GetComponent<EnemySpawns>().SpawnEnemies();
+            UponRoomEntrance();
         }
         if (collision.gameObject.CompareTag("FDoor") && roomRandomizer.CheckValidRoom(x, z, "f")) {
             player.GetComponent<Transform>().SetPositionAndRotation(new Vector3 (x, y, z + 15), Quaternion.identity);
-            FindObjectOfType<GameManager>().GetComponent<EnemySpawns>().SpawnEnemies();
+            UponRoomEntrance();
         }
         if (collision.gameObject.CompareTag("BDoor") && roomRandomizer.CheckValidRoom(x, z, "b")) {
-            player.GetComponent<Transform>().SetPositionAndRotation(new Vector3 (x, y, z - 15), Quaternion.identity);
-            FindObjectOfType<GameManager>().GetComponent<EnemySpawns>().SpawnEnemies();
+            player.GetComponent<Transform>().SetPositionAndRotation(new Vector3(x, y, z - 15), Quaternion.identity);
+            UponRoomEntrance();
+        }
+
+        if (collision.gameObject.CompareTag("EndLevelPoint")) {
+            Debug.Log("Goal");
+            gameManager.NextLevel();
+            Destroy(collision.gameObject, 1f);
         }
     }
 
+    private void UponRoomEntrance() {
+        FindObjectOfType<GameManager>().GetComponent<EnemySpawns>().SpawnEnemies();
+    }
 }

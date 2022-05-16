@@ -85,4 +85,12 @@ public class RoomRandomizer : MonoBehaviour {
     public GameObject GetRoom(int x, int z) {
         return roomLayout[x, z];
     }
+
+    public int GetRoomLayoutWidth() {
+        return roomLayout.GetLength(0);
+    }
+
+    public int GetRoomLayoutHeight() {
+        return roomLayout.GetLength(1);
+    }
 }
